@@ -19,7 +19,7 @@
           <div class="small-monitor frame">
             <div class="monitor-screen"></div>
             <div class="monitor-bars">
-              <span v-for="i in 6" :key="`bar-${i}`"></span>
+              <span v-for="barIndex in 6" :key="`bar-${barIndex}`"></span>
             </div>
           </div>
         </article>
@@ -56,18 +56,25 @@
 
 <style scoped>
 .home {
+  --bg-base: #09090d;
+  --bg-panel: #0d1118;
+  --accent: #6f95ca;
+  --accent-soft: #7ba1d8;
+  --text-main: #e9ddcf;
+  --light-ivory: #f4e8db;
+  --planet-shadow: #1d2331;
   min-height: 100vh;
   padding: 1.2rem;
-  background: #09090d;
-  color: #e9ddcf;
+  background: var(--bg-base);
+  color: var(--text-main);
   font-family: "Courier New", "Lucida Console", monospace;
 }
 
 .poster {
   max-width: 980px;
   margin: 0 auto;
-  border: 2px solid #6f95ca;
-  background: radial-gradient(circle at 50% 20%, #1b202b 0%, #09090d 58%);
+  border: 2px solid var(--accent);
+  background: radial-gradient(circle at 50% 20%, #1b202b 0%, var(--bg-base) 58%);
   padding: 1rem;
   box-shadow: 0 0 24px rgba(115, 159, 224, 0.18);
 }
@@ -86,7 +93,7 @@
 }
 
 .future-btn {
-  border: 1px solid #6f95ca;
+  border: 1px solid var(--accent);
   background: transparent;
   color: #8eaed8;
   font: inherit;
@@ -106,8 +113,8 @@
 }
 
 .frame {
-  border: 2px solid #6f95ca;
-  background: #0d1118;
+  border: 2px solid var(--accent);
+  background: var(--bg-panel);
 }
 
 .planet-block {
@@ -119,12 +126,12 @@
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   margin: 0 auto 0.8rem;
-  background: radial-gradient(circle at 30% 30%, #f4e8db 0%, #e8ddcf 36%, #1d2331 37%, #09090d 100%);
-  box-shadow: inset -22px -18px 0 #09090d;
+  background: radial-gradient(circle at 30% 30%, var(--light-ivory) 0%, var(--text-main) 36%, var(--planet-shadow) 37%, var(--bg-base) 100%);
+  box-shadow: inset -22px -18px 0 var(--bg-base);
 }
 
 .tagline {
-  background: #7ba1d8;
+  background: var(--accent-soft);
   color: #0c111b;
   padding: 0.7rem;
   font-weight: 700;
@@ -135,7 +142,7 @@
   margin: 0;
   font-size: clamp(2rem, 4vw, 3.2rem);
   letter-spacing: 0.1em;
-  color: #7ba1d8;
+  color: var(--accent-soft);
 }
 
 .small-monitor {
@@ -156,7 +163,7 @@
 
 .monitor-bars span {
   height: 8px;
-  border: 1px solid #6f95ca;
+  border: 1px solid var(--accent);
 }
 
 .main-title {
@@ -164,18 +171,18 @@
   font-size: clamp(3rem, 11vw, 6.5rem);
   line-height: 0.9;
   letter-spacing: 0.06em;
-  color: #7ba1d8;
+  color: var(--accent-soft);
 }
 
 .signal-line {
   height: 18px;
-  border: 2px solid #6f95ca;
+  border: 2px solid var(--accent);
   background: repeating-linear-gradient(
     90deg,
-    #7ba1d8 0 6px,
-    #0d1118 6px 8px,
-    #7ba1d8 8px 12px,
-    #0d1118 12px 16px
+    var(--accent-soft) 0 6px,
+    var(--bg-panel) 6px 8px,
+    var(--accent-soft) 8px 12px,
+    var(--bg-panel) 12px 16px
   );
 }
 
@@ -186,16 +193,16 @@
 .card-head {
   display: flex;
   justify-content: space-between;
-  color: #7ba1d8;
+  color: var(--accent-soft);
   margin-bottom: 0.7rem;
 }
 
 .saturn {
   width: 42%;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   margin: 0 auto 1rem;
-  background: #7ba1d8;
+  background: var(--accent-soft);
   position: relative;
 }
 
@@ -206,16 +213,16 @@
   left: -25%;
   width: 150%;
   height: 26%;
-  border: 2px solid #7ba1d8;
+  border: 2px solid var(--accent-soft);
   border-radius: 999px;
 }
 
 .car-shape {
   height: 180px;
   background:
-    linear-gradient(#f4e8db 0 64%, transparent 64%),
-    linear-gradient(135deg, transparent 8%, #f4e8db 10% 72%, transparent 74%),
-    linear-gradient(90deg, #f4e8db 0 100%);
+    linear-gradient(var(--light-ivory) 0 64%, transparent 64%),
+    linear-gradient(135deg, transparent 8%, var(--light-ivory) 10% 72%, transparent 74%),
+    linear-gradient(90deg, var(--light-ivory) 0 100%);
   clip-path: polygon(6% 52%, 20% 35%, 50% 28%, 75% 33%, 92% 45%, 98% 63%, 93% 76%, 9% 76%);
 }
 
@@ -230,23 +237,23 @@
 .data-card h3 {
   margin: 0 0 0.45rem;
   font-size: 1.85rem;
-  color: #e9ddcf;
+  color: var(--text-main);
 }
 
 .data-info {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.25rem 0.6rem;
-  color: #7ba1d8;
+  color: var(--accent-soft);
   font-size: 0.78rem;
 }
 
 .pixel-code {
-  border: 2px solid #6f95ca;
+  border: 2px solid var(--accent);
   background:
-    radial-gradient(circle at 20% 30%, #7ba1d8 8%, transparent 9%) 0 0 / 24px 24px,
-    radial-gradient(circle at 66% 72%, #7ba1d8 8%, transparent 9%) 0 0 / 24px 24px,
-    #0d1118;
+    radial-gradient(circle at 20% 30%, var(--accent-soft) 8%, transparent 9%) 0 0 / 24px 24px,
+    radial-gradient(circle at 66% 72%, var(--accent-soft) 8%, transparent 9%) 0 0 / 24px 24px,
+    var(--bg-panel);
 }
 
 @media (max-width: 860px) {
